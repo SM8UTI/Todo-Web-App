@@ -23,7 +23,10 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, status);
+    if (title.trim().length === 0) {
+      toast.error("Invalid Input!!!");
+      return;
+    }
     dispatch(
       addTodo({
         id: uuidv4(),
