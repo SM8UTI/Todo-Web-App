@@ -32,7 +32,8 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
         id: uuidv4(),
         task: title.trim(),
         status: status,
-        date: format(new Date(), "p"),
+        time: format(new Date(), "p"),
+        date: format(new Date(), "PPP"),
       })
     );
     exitModal();

@@ -13,10 +13,13 @@ const Task = ({ task, date = "" }) => {
       transition={{ ease: "easeInOut", duration: 0.66 }}
       className="task bg-gray-800 p-4 rounded-lg relative shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] flex flex-col justify-between"
     >
-      <h5 className={"text-xl mb-12"}>{task.task}</h5>
+      <div className="flex flex-col gap-2">
+        <span className="text-xs text-gray-400">{task.date}</span>
+        <h5 className={"text-xl mb-12 capitalize"}>{task.task}</h5>
+      </div>
 
       <div className="footer flex flex-row items-center gap-2 justify-between">
-        <h4>{task.date}</h4>
+        <span className="text-xs text-gray-400">{task.time}</span>
         <div className="flex flex-row items-center gap-2">
           <div className={style.ico}>
             <MdModeEditOutline />
