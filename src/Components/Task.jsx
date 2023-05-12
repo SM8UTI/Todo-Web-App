@@ -1,11 +1,14 @@
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { motion as m } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../Store/Slice/TodoSlice";
 
 const style = {
   ico: "ico w-[40px] aspect-square grid place-content-center bg-indigo-700 text-xl text-neutral-50 rounded-full cursor-pointer hover:drop-shadow-glow   border-2 border-indigo-700 hover:border-2 hover:border-indigo-300 transition-all duration-300 ",
 };
 
-const Task = ({ task, date = "" }) => {
+const Task = ({ task }) => {
+  const dispatch = useDispatch();
   return (
     <m.div
       initial={{ opacity: 0, translateY: "-20px" }}
@@ -24,7 +27,12 @@ const Task = ({ task, date = "" }) => {
           <div className={style.ico}>
             <MdModeEditOutline />
           </div>
-          <div className={style.ico}>
+          <div
+            className={style.ico}
+            onClick={() => {
+              dispatch(deleteTodo(task.id));
+            }}
+          >
             <MdDelete />
           </div>
         </div>

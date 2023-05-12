@@ -10,7 +10,7 @@ import SmallAddBtn from "./Components/SmallAddBtn";
 
 const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const items = useSelector((state) => state.todo);
+  const items = useSelector((state) => state.todo.todoList);
 
   const [sticky, setSticky] = useState(false);
 
