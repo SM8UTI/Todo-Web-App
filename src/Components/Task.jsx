@@ -15,7 +15,7 @@ const Task = ({ task, date = "" }) => {
     >
       <div className="flex flex-col gap-2">
         <span className="text-xs text-gray-400">{task.date}</span>
-        <h5 className={"text-xl mb-12 capitalize"}>{task.task}</h5>
+        <h5 className={"text-2xl mb-12 capitalize"}>{task.task}</h5>
       </div>
 
       <div className="footer flex flex-row items-center gap-2 justify-between">
