@@ -9,10 +9,10 @@ const Header = () => {
   return (
     <header className={"border-b-2 border-indigo-500 stickyHeader"}>
       <div className={style.container}>
-        <h1 className={"text-base md:text-xl whitespace-nowrap"}>
+        <h1 className={"text-base md:text-2xl font-semibold whitespace-nowrap mx-auto"}>
           Todo Manager
         </h1>
-        <form
+        {/* <form
           className={
             "text-sm bg-gray-800 w-full max-w-[500px] flex items-center gap-2 pr-3 rounded-full"
           }
@@ -25,7 +25,7 @@ const Header = () => {
           <button type="submit" className={"text-base text-indigo-500"}>
             <BiSearch />
           </button>
-        </form>
+        </form> */}
       </div>
     </header>
   );
