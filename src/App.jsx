@@ -36,7 +36,7 @@ const App = () => {
       </div>
       <TodoModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       <Toaster
-        position="bottom-right"
+        position="top-right"
         toastOptions={{
           style: {
             fontSize: "1rem",
