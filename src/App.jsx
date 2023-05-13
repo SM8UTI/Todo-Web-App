@@ -31,7 +31,7 @@ const App = () => {
       <div className="container p-2 mt-6 grid grid-cols-1 md:grid-cols-3  max-w-[1300px] mx-auto  gap-8 w-full">
         <AddButton setModalOpen={setModalOpen} />
         {items.map((elem, index) => (
-          <Task task={elem} />
+          <Task task={elem} key={index} />
         ))}
       </div>
       <TodoModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
