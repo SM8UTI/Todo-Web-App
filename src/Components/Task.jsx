@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteTodo } from "../Store/Slice/TodoSlice";
 import { useState } from "react";
 import UpdateModal from "./UpdateModal";
+import { toast } from "react-hot-toast";
 
 const style = {
   ico: "ico w-[40px] aspect-square grid place-content-center bg-indigo-700 text-xl text-neutral-50 rounded-full cursor-pointer hover:drop-shadow-glow   border-2 border-indigo-700 hover:border-2 hover:border-indigo-300 transition-all duration-300 ",
@@ -41,6 +42,7 @@ const Task = ({ task }) => {
               className={style.ico}
               onClick={() => {
                 dispatch(deleteTodo(task.id));
+                toast.error("Removed");
               }}
             >
               <MdDelete />
