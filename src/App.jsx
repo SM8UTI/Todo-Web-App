@@ -29,11 +29,13 @@ const App = () => {
     <>
       {sticky && <SmallAddBtn setModalOpen={setModalOpen} />}
       <Header />
-      <div className="container p-2 mt-6 grid grid-cols-1 md:grid-cols-3  max-w-[1300px] mx-auto  gap-8 w-full">
-        <AddButton setModalOpen={setModalOpen} />
-        {items.map((elem, index) => (
-          <Task task={elem} key={index} />
-        ))}
+      <div className="h-full min-h-[calc(100vh_-_180px)]">
+        <div className="container p-2 mt-6 grid grid-cols-1 md:grid-cols-3  max-w-[1300px] mx-auto  gap-8 w-full ">
+          <AddButton setModalOpen={setModalOpen} />
+          {items.map((elem, index) => (
+            <Task task={elem} key={index} />
+          ))}
+        </div>
       </div>
       <Footer />
       <TodoModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
