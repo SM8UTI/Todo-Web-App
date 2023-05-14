@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import Task from "./Components/Task";
 import SmallAddBtn from "./Components/SmallAddBtn";
+import Footer from "./Components/Footer";
 
 const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,6 +35,7 @@ const App = () => {
           <Task task={elem} key={index} />
         ))}
       </div>
+      <Footer />
       <TodoModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       <Toaster
         position="top-right"
