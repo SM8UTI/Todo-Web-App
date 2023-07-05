@@ -44,15 +44,25 @@ const Task = ({ task }) => {
     }
   };
 
+  const priorityBorder = (data) => {
+    if (data == "high") {
+      return "border-red-500";
+    } else if (data == "medium") {
+      return "border-orange-400";
+    } else {
+      return "border-green-400";
+    }
+  };
+
   return (
     <>
       <m.div
         initial={{ opacity: 0, translateY: "-20px" }}
         animate={{ opacity: 1, translateY: 0 }}
         transition={{ ease: "easeInOut", duration: 0.66 }}
-        className={
-          "task bg-gray-800 p-4 rounded-lg relative shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] flex flex-col justify-between"
-        }
+        className={`task bg-gray-800 p-4 rounded-lg relative shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] flex flex-col justify-between border-l-[.5rem] ${priorityBorder(
+          task.priority
+        )}`}
       >
         <div className="flex flex-col gap-2">
           <div className="flex flex-row gap-2">
@@ -64,7 +74,9 @@ const Task = ({ task }) => {
               {task.status}
             </span>
 
-            <span className={`text-xs text-gray-400 `}>{task.date}</span>
+            <span className={`text-xs text-gray-400 `}>
+              {task.date}, {task.time}
+            </span>
           </div>
           <h5
             className={`text-2xl mb-12 capitalize ${
@@ -76,7 +88,9 @@ const Task = ({ task }) => {
         </div>
 
         <div className="footer flex flex-row items-center gap-2 justify-between">
-          <span className="text-xs text-gray-400">{task.time}</span>
+          <span className={`text-xs uppercase opacity-60`}>
+            {task.priority}
+          </span>
 
           <div className="flex flex-row items-center gap-2">
             <div

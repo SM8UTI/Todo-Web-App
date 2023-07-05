@@ -12,6 +12,7 @@ import { format } from "date-fns";
 const TodoModal = ({ modalOpen, setModalOpen }) => {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("incomplete");
+  const [priority, setPriority] = useState("high");
 
   const dispatch = useDispatch();
 
@@ -19,10 +20,16 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
     setModalOpen(false);
     setTitle("");
     setStatus("incomplete");
+    setPriority("high");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (priority === "") {
+      setPriority("high");
+    }
+
     if (title.trim().length === 0) {
       toast.error("Invalid Input!!!");
       return;
@@ -32,6 +39,7 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
         id: uuidv4(),
         task: title.trim(),
         status: status,
+        priority: priority,
         time: format(new Date(), "p"),
         date: format(new Date(), "PPP"),
       })
@@ -76,21 +84,40 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="status" className="text-md font-semibold">
-                    Status
-                  </label>
-                  <select
-                    name="status"
-                    id="status"
-                    placeholder="status"
-                    className=" w-full min-w-[300px] p-3 text-sm text-neutral-800 outline-none rounded-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                  >
-                    <option value="incomplete">Incomplete</option>
-                    <option value="complete">Complete</option>
-                  </select>
+                <div className="flex flex-col sm:flex-row-reverse items-center gap-2">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="status" className="text-md font-semibold">
+                      Status
+                    </label>
+                    <select
+                      name="status"
+                      id="status"
+                      placeholder="status"
+                      className=" w-full min-w-[300px] p-3 pl-2 text-sm text-neutral-800 outline-none rounded-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="incomplete">Incomplete</option>
+                      <option value="complete">Complete</option>
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="priority" className="text-md font-semibold">
+                      Priority
+                    </label>
+                    <select
+                      name="priority"
+                      id="priority"
+                      placeholder="priority"
+                      className=" w-full min-w-[300px] p-3 pl-2  text-sm text-neutral-800 outline-none rounded-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      value={priority}
+                      onChange={(e) => setPriority(e.target.value)}
+                    >
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="flex flex-row gap-3 max-w-full ml-auto mt-3">
                   <button

@@ -59,6 +59,7 @@ const TodoSlice = createSlice({
           if (todo.id === action.payload.id) {
             todo.status = action.payload.status;
             todo.task = action.payload.title;
+            todo.priority = action.payload.priority;
           }
         });
         localStorage.setItem("todo", JSON.stringify(todoListArr));
